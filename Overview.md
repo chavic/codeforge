@@ -16,6 +16,7 @@ CodeForge is built as a headless application capable of supporting multiple inte
   - Pkl Integration Module
   - Dependency Manager
   - Build System
+  - Testing Framework
 
 - Interfaces:
   - Command Line Interface (CLI)
@@ -25,7 +26,7 @@ CodeForge is built as a headless application capable of supporting multiple inte
 - Database:
   - SurrealDB (for flexible, multi-model data storage)
 
-The Dependency Manager handles project dependencies, ensuring all required libraries and tools are properly managed and versioned. The Build System automates the process of compiling, testing, and packaging the generated projects, providing a seamless development experience.
+The Dependency Manager handles project dependencies, ensuring all required libraries and tools are properly managed and versioned. The Build System automates the process of compiling, testing, and packaging the generated projects, providing a seamless development experience. The Testing Framework facilitates the creation and execution of automated tests for the generated code, ensuring quality and reliability.
 
 ## 3. Project Types
 
