@@ -32,11 +32,14 @@ class CLIInterface(private val codeForgeCore: CodeForgeCore) {
         val parts = input.split(" ")
         when (parts[0]) {
             "create" -> {
-                if (parts.size < 3) {
-                    println("Usage: create <project_name> <project_type>")
+                if (parts.size < 4) {
+                    println("Usage: create <project_name> <project_type> <requirements>")
                     return
                 }
-                val result = codeForgeCore.createProject(parts[1], parts[2])
+                val name = parts[1]
+                val type = parts[2]
+                val requirements = parts.subList(3, parts.size).joinToString(" ")
+                val result = codeForgeCore.createProject(name, type, requirements)
                 println(result)
             }
             "generate" -> {

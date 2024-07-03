@@ -10,15 +10,21 @@ class CodeForgeCore {
     private val aiAssistant = AIAssistant()
     private val codeGenerationEngine = CodeGenerationEngine()
     private val pklIntegrationModule = PklIntegrationModule()
+    private val projectDefinitionEngine = ProjectDefinitionEngine(aiAssistant)
 
-    fun createProject(name: String, type: String): String {
-        // Implement project creation logic
-        return "Project $name of type $type created"
+    fun createProject(name: String, type: String, requirements: String): String {
+        val projectDefinition = projectDefinitionEngine.defineProject(name, type, requirements)
+        val projectId = projectManager.createProject(projectDefinition)
+        return "Project $name of type $type created with ID: $projectId"
     }
 
     fun generateCode(projectId: String): String {
-        // Implement code generation logic
-        return "Code generated for project $projectId"
+        val projectDefinition = projectManager.getProject(projectId)
+        val generatedCode = codeGenerationEngine.generateCode(
+            projectDefinition["type"] as String,
+            projectDefinition["requirements"] as String
+        )
+        return "Code generated for project $projectId: $generatedCode"
     }
 
     // Add more methods as needed
