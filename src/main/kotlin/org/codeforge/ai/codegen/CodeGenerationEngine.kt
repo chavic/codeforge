@@ -1,14 +1,13 @@
 package org.codeforge.ai.codegen
 
-class CodeGenerationEngine {
+class CodeGenerationEngine(private val templateEngine: TemplateEngine) {
     fun generateCode(projectType: String, requirements: String): String {
-        // Implement code generation logic
-        return "Generated code for $projectType based on requirements: $requirements"
-    }
-
-    fun applyTemplate(template: String, variables: Map<String, String>): String {
-        // Implement template application logic
-        return "Applied template with variables"
+        val template = templateEngine.loadTemplate(projectType)
+        val variables = mapOf(
+            "projectType" to projectType,
+            "requirements" to requirements
+        )
+        return templateEngine.applyTemplate(template, variables)
     }
 
     // Add more code generation methods as needed
